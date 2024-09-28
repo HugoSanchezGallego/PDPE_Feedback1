@@ -28,8 +28,8 @@ fun PantallaAgregarNovela(navController: NavController, usuario: String, onAddNo
                     }
                 },
                 actions = {
-                    Button(onClick = { navController.navigate("principal/$usuario") }) {
-                        Text("Inicio")
+                    Button(onClick = { navController.navigate("login") }) {
+                        Text("Cerrar Sesión")
                     }
                 }
             )

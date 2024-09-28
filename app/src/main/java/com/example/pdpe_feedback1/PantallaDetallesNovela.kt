@@ -29,8 +29,8 @@ fun PantallaDetallesNovela(navController: NavController, novela: Novela, usuario
                     }
                 },
                 actions = {
-                    Button(onClick = { navController.navigate("principal/$usuario") }) {
-                        Text("Inicio")
+                    Button(onClick = { navController.navigate("login") }) {
+                        Text("Cerrar Sesión")
                     }
                 }
             )

@@ -22,8 +22,8 @@ fun PantallaPrincipal(navController: NavController, usuario: String) {
             TopAppBar(
                 title = { Text("Principal") },
                 actions = {
-                    Button(onClick = { navController.navigate("principal/$usuario") }) {
-                        Text("Inicio")
+                    Button(onClick = { navController.navigate("login") }) {
+                        Text("Cerrar Sesión")
                     }
                 }
             )
