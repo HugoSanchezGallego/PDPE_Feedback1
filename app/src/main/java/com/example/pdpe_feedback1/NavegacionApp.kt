@@ -21,26 +21,20 @@ fun NavegacionApp() {
             val usuario = backStackEntry.arguments?.getString("usuario") ?: ""
             PantallaPrincipal(navController, usuario)
         }
-        composable("agregarNovela") {
-            PantallaAgregarNovela(navController) { nuevaNovela ->
-                NovelaRepository.addNovela(nuevaNovela)
-                navController.navigateUp()
+        composable("agregarNovela/{usuario}") { backStackEntry ->
+            val usuario = backStackEntry.arguments?.getString("usuario") ?: ""
+            PantallaAgregarNovela(navController, usuario) { nuevaNovela ->
+                NovelaRepository.addNovela(usuario, nuevaNovela)
+                navController.navigate("principal/$usuario")
             }
         }
-        composable("detallesNovela/{titulo}") { backStackEntry ->
+        composable("detallesNovela/{titulo}/{usuario}") { backStackEntry ->
             val titulo = backStackEntry.arguments?.getString("titulo") ?: ""
-            val novela = NovelaRepository.getNovelas().find { it.titulo == titulo } ?: return@composable
-            PantallaDetallesNovela(novela, onFavoriteToggle = { updatedNovela ->
-                NovelaRepository.updateNovela(updatedNovela)
-            }, onAddResena = { resena ->
-                ResenaRepository.addResena(novela, resena)
+            val usuario = backStackEntry.arguments?.getString("usuario") ?: ""
+            val novela = NovelaRepository.getNovelas(usuario).find { it.titulo == titulo } ?: return@composable
+            PantallaDetallesNovela(navController, novela, usuario, onFavoriteToggle = { updatedNovela ->
+                NovelaRepository.updateNovela(usuario, updatedNovela)
             })
-        }
-        composable("resenas") {
-            val resenas = ResenaRepository.getAllResenas()
-            PantallaResenas(novela = Novela("", "", 0, ""), resenas = resenas) { resena ->
-                ResenaRepository.addResena(Novela("", "", 0, ""), resena)
-            }
         }
     }
 }

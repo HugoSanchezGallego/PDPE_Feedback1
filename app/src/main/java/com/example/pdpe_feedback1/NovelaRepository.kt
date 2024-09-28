@@ -1,26 +1,28 @@
-// NovelaRepository.kt
 package com.example.pdpe_feedback1
 
-import androidx.compose.runtime.mutableStateListOf
-import androidx.compose.runtime.snapshots.SnapshotStateList
+import androidx.compose.runtime.mutableStateMapOf
+import androidx.compose.runtime.snapshots.SnapshotStateMap
 
 object NovelaRepository {
-    private val novelas: SnapshotStateList<Novela> = mutableStateListOf()
+    private val novelasPorUsuario: SnapshotStateMap<String, MutableList<Novela>> = mutableStateMapOf()
 
-    fun getNovelas(): List<Novela> = novelas
+    fun getNovelas(usuario: String): List<Novela> = novelasPorUsuario[usuario] ?: emptyList()
 
-    fun addNovela(novela: Novela) {
-        novelas.add(novela)
+    fun addNovela(usuario: String, novela: Novela) {
+        if (novelasPorUsuario[usuario] == null) {
+            novelasPorUsuario[usuario] = mutableListOf()
+        }
+        novelasPorUsuario[usuario]?.add(novela)
     }
 
-    fun deleteNovela(novela: Novela) {
-        novelas.remove(novela)
+    fun deleteNovela(usuario: String, novela: Novela) {
+        novelasPorUsuario[usuario]?.remove(novela)
     }
 
-    fun updateNovela(updatedNovela: Novela) {
-        val index = novelas.indexOfFirst { it.titulo == updatedNovela.titulo }
-        if (index != -1) {
-            novelas[index] = updatedNovela
+    fun updateNovela(usuario: String, updatedNovela: Novela) {
+        val index = novelasPorUsuario[usuario]?.indexOfFirst { it.titulo == updatedNovela.titulo }
+        if (index != null && index != -1) {
+            novelasPorUsuario[usuario]?.set(index, updatedNovela)
         }
     }
 }

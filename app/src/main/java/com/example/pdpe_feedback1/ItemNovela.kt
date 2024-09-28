@@ -10,13 +10,17 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.ui.graphics.Color
+import androidx.compose.foundation.background
 
 @Composable
 fun ItemNovela(novela: Novela, onDelete: () -> Unit, onDetails: () -> Unit) {
+    val backgroundColor = if (novela.esFavorita) Color(0xFFFFD700) else Color.Transparent
+
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(8.dp),
+            .padding(8.dp)
+            .background(backgroundColor),
         verticalAlignment = Alignment.CenterVertically
     ) {
         Column(modifier = Modifier.weight(1f)) {

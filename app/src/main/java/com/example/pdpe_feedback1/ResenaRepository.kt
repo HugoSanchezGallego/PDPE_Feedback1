@@ -6,9 +6,11 @@ import androidx.compose.runtime.snapshots.SnapshotStateList
 object ResenaRepository {
     private val resenas: SnapshotStateList<Resena> = mutableStateListOf()
 
-    fun getAllResenas(): List<Resena> = resenas
+    fun getResenasByTitulo(titulo: String): List<Resena> {
+        return resenas.filter { it.novelaTitulo == titulo }
+    }
 
-    fun addResena(novela: Novela, resena: Resena) {
+    fun addResena(resena: Resena) {
         resenas.add(resena)
     }
 }
