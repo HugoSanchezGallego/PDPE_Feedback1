@@ -1,4 +1,3 @@
-// Theme.kt
 package com.example.pdpe_feedback1.ui.theme
 
 import androidx.compose.foundation.isSystemInDarkTheme
@@ -7,15 +6,31 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 
 private val DarkColorPalette = darkColorScheme(
-    primary = Color(0xFFBB86FC),
-    primaryContainer = Color(0xFF3700B3),
-    secondary = Color(0xFF03DAC6)
+    primary = Color(0xFF1E88E5),
+    primaryContainer = Color(0xFF1565C0),
+    secondary = Color(0xFF00ACC1),
+    background = Color(0xFF121212),
+    surface = Color(0xFF1E1E1E),
+    onPrimary = Color.White,
+    onSecondary = Color.Black,
+    onBackground = Color.White,
+    onSurface = Color.White
 )
 
 private val LightColorPalette = lightColorScheme(
-    primary = Color(0xFF6200EE),
-    primaryContainer = Color(0xFF3700B3),
-    secondary = Color(0xFF03DAC6)
+    primary = Color(0xFF1E88E5),
+    primaryContainer = Color(0xFF1565C0),
+    secondary = Color(0xFF00ACC1),
+    background = Color(0xFFF5F5F5),
+    surface = Color(0xFFFFFFFF),
+    onPrimary = Color.White,
+    onSecondary = Color.Black,
+    onBackground = Color.Black,
+    onSurface = Color.Black
+)
+
+private val AppTypography = Typography(
+    // Define your typography styles here
 )
 
 @Composable
@@ -28,8 +43,8 @@ fun AppTheme(darkTheme: Boolean = isSystemInDarkTheme(), content: @Composable ()
 
     MaterialTheme(
         colorScheme = colors,
-        typography = Typography,
-        shapes = Shapes, // Use the Shapes object defined in Shapes.kt
+        typography = AppTypography, // Use the instance of Typography
+        shapes = Shapes,
         content = content
     )
 }

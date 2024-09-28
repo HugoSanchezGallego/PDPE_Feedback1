@@ -1,13 +1,8 @@
 package com.example.pdpe_feedback1
 
 import androidx.compose.runtime.*
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Button
-import androidx.compose.material3.Text
-import androidx.compose.material3.TextField
+import androidx.compose.foundation.layout.*
+import androidx.compose.material3.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.input.PasswordVisualTransformation
@@ -28,17 +23,21 @@ fun PantallaLogin(navController: NavController, onLoginSuccess: (String) -> Unit
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
+        Text("Iniciar Sesión", style = MaterialTheme.typography.headlineMedium)
+        Spacer(modifier = Modifier.height(16.dp))
         TextField(
             value = usuario,
             onValueChange = { usuario = it },
             label = { Text("Usuario") }
         )
+        Spacer(modifier = Modifier.height(8.dp))
         TextField(
             value = contrasena,
             onValueChange = { contrasena = it },
             label = { Text("Contraseña") },
             visualTransformation = PasswordVisualTransformation()
         )
+        Spacer(modifier = Modifier.height(16.dp))
         Button(onClick = {
             if (AuthManager.authenticate(usuario, contrasena)) {
                 onLoginSuccess(usuario)
@@ -48,6 +47,7 @@ fun PantallaLogin(navController: NavController, onLoginSuccess: (String) -> Unit
         }) {
             Text("Iniciar Sesión")
         }
+        Spacer(modifier = Modifier.height(8.dp))
         Button(onClick = {
             navController.navigate("registro")
         }) {

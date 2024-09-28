@@ -36,7 +36,10 @@ fun PantallaAgregarNovela(navController: NavController, usuario: String, onAddNo
         }
     ) { paddingValues ->
         Column(
-            modifier = Modifier.padding(paddingValues).padding(16.dp),
+            modifier = Modifier
+                .padding(paddingValues)
+                .padding(16.dp)
+                .fillMaxSize(),
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
@@ -45,21 +48,25 @@ fun PantallaAgregarNovela(navController: NavController, usuario: String, onAddNo
                 onValueChange = { titulo = it },
                 label = { Text("Título") }
             )
+            Spacer(modifier = Modifier.height(8.dp))
             TextField(
                 value = autor,
                 onValueChange = { autor = it },
                 label = { Text("Autor") }
             )
+            Spacer(modifier = Modifier.height(8.dp))
             TextField(
                 value = ano,
                 onValueChange = { ano = it },
                 label = { Text("Año") }
             )
+            Spacer(modifier = Modifier.height(8.dp))
             TextField(
                 value = sinopsis,
                 onValueChange = { sinopsis = it },
                 label = { Text("Sinopsis") }
             )
+            Spacer(modifier = Modifier.height(16.dp))
             Button(onClick = {
                 try {
                     val anoInt = ano.toInt()

@@ -36,7 +36,14 @@ fun PantallaDetallesNovela(navController: NavController, novela: Novela, usuario
             )
         }
     ) { paddingValues ->
-        Column(modifier = Modifier.padding(paddingValues).padding(16.dp)) {
+        Column(
+            modifier = Modifier
+                .padding(paddingValues)
+                .padding(16.dp)
+                .fillMaxSize(),
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
             Text(text = novela.titulo, style = MaterialTheme.typography.headlineSmall)
             Text(text = "Autor: ${novela.autor}")
             Text(text = "Año: ${novela.ano}")
@@ -74,14 +81,12 @@ fun PantallaDetallesNovela(navController: NavController, novela: Novela, usuario
                 Spacer(modifier = Modifier.height(16.dp))
                 Button(onClick = {
                     if (calificacion in 1..10 && comentario.isNotEmpty()) {
-                        val nuevaResena = Resena(calificacion, comentario, usuario, System.currentTimeMillis(), novela.titulo)
-                        ResenaRepository.addResena(nuevaResena)
+                        ResenaRepository.addResena(Resena(calificacion, comentario, usuario, System.currentTimeMillis(), novela.titulo))
                         resenas = ResenaRepository.getResenasByTitulo(novela.titulo)
                         calificacion = 0
                         comentario = ""
-                        mensajeError = ""
                     } else {
-                        mensajeError = "Calificación debe ser entre 1 y 10 y comentario no puede estar vacío"
+                        mensajeError = "Calificación debe estar entre 1 y 10 y comentario no puede estar vacío"
                     }
                 }) {
                     Text("Añadir Reseña")
@@ -103,9 +108,9 @@ fun ItemResena(resena: Resena) {
         verticalAlignment = Alignment.CenterVertically
     ) {
         Column(modifier = Modifier.weight(1f)) {
-            Text("Usuario: ${resena.usuario}", fontWeight = FontWeight.Bold)
-            Text("Calificación: ${resena.calificacion}")
+            Text("Calificación: ${resena.calificacion}", fontWeight = FontWeight.Bold)
             Text("Comentario: ${resena.comentario}")
+            Text("Usuario: ${resena.usuario}")
         }
     }
 }

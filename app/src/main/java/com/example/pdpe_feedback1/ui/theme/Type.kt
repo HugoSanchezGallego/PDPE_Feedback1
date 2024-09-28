@@ -1,34 +1,31 @@
 package com.example.pdpe_feedback1.ui.theme
 
-import androidx.compose.material3.Typography
-import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.font.FontFamily
-import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.unit.sp
+import androidx.compose.foundation.isSystemInDarkTheme
+import androidx.compose.material3.*
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.graphics.Color
 
-// Set of Material typography styles to start with
-val Typography = Typography(
-    bodyLarge = TextStyle(
-        fontFamily = FontFamily.Default,
-        fontWeight = FontWeight.Normal,
-        fontSize = 16.sp,
-        lineHeight = 24.sp,
-        letterSpacing = 0.5.sp
-    )
-    /* Other default text styles to override
-    titleLarge = TextStyle(
-        fontFamily = FontFamily.Default,
-        fontWeight = FontWeight.Normal,
-        fontSize = 22.sp,
-        lineHeight = 28.sp,
-        letterSpacing = 0.sp
-    ),
-    labelSmall = TextStyle(
-        fontFamily = FontFamily.Default,
-        fontWeight = FontWeight.Medium,
-        fontSize = 11.sp,
-        lineHeight = 16.sp,
-        letterSpacing = 0.5.sp
-    )
-    */
+private val DarkColorPalette = darkColorScheme(
+    primary = Color(0xFF1E88E5),
+    primaryContainer = Color(0xFF1565C0),
+    secondary = Color(0xFF00ACC1),
+    background = Color(0xFF121212),
+    surface = Color(0xFF1E1E1E),
+    onPrimary = Color.White,
+    onSecondary = Color.Black,
+    onBackground = Color.White,
+    onSurface = Color.White
 )
+
+private val LightColorPalette = lightColorScheme(
+    primary = Color(0xFF1E88E5),
+    primaryContainer = Color(0xFF1565C0),
+    secondary = Color(0xFF00ACC1),
+    background = Color(0xFFF5F5F5),
+    surface = Color(0xFFFFFFFF),
+    onPrimary = Color.White,
+    onSecondary = Color.Black,
+    onBackground = Color.Black,
+    onSurface = Color.Black
+)
+

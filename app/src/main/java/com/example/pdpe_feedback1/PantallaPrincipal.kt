@@ -34,11 +34,46 @@ fun PantallaPrincipal(navController: NavController, usuario: String) {
             Spacer(modifier = Modifier.height(16.dp))
 
             // Opciones de ordenamiento
-            Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                Button(onClick = { orden = Orden.TITULO_ASC }) { Text("Título Asc") }
-                Button(onClick = { orden = Orden.TITULO_DESC }) { Text("Título Desc") }
-                Button(onClick = { orden = Orden.AUTOR_ASC }) { Text("Autor Asc") }
-                Button(onClick = { orden = Orden.AUTOR_DESC }) { Text("Autor Desc") }
+            Row(
+                horizontalArrangement = Arrangement.spacedBy(8.dp),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Button(
+                    onClick = { orden = Orden.TITULO_ASC },
+                    modifier = Modifier.weight(1f).height(72.dp)
+                ) {
+                    Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                        Text("Título")
+                        Text("Asc")
+                    }
+                }
+                Button(
+                    onClick = { orden = Orden.TITULO_DESC },
+                    modifier = Modifier.weight(1f).height(72.dp)
+                ) {
+                    Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                        Text("Título")
+                        Text("Desc")
+                    }
+                }
+                Button(
+                    onClick = { orden = Orden.AUTOR_ASC },
+                    modifier = Modifier.weight(1f).height(72.dp)
+                ) {
+                    Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                        Text("Autor")
+                        Text("Asc")
+                    }
+                }
+                Button(
+                    onClick = { orden = Orden.AUTOR_DESC },
+                    modifier = Modifier.weight(1f).height(72.dp)
+                ) {
+                    Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                        Text("Autor")
+                        Text("Desc")
+                    }
+                }
             }
             Spacer(modifier = Modifier.height(16.dp))
 
